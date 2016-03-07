@@ -1,4 +1,4 @@
-package org.maxline;
+package org.maxline.timeverifier;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -7,7 +7,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class WelcomeAppTest
+public class StartTest
     extends TestCase
 {
     /**
@@ -15,7 +15,7 @@ public class WelcomeAppTest
      *
      * @param testName name of the test case
      */
-    public WelcomeAppTest(String testName)
+    public StartTest(String testName)
     {
         super( testName );
     }
@@ -25,7 +25,7 @@ public class WelcomeAppTest
      */
     public static Test suite()
     {
-        return new TestSuite( WelcomeAppTest.class );
+        return new TestSuite( StartTest.class );
     }
 
     /**
