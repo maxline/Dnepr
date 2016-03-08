@@ -1,6 +1,5 @@
 package org.maxline.timeverifier;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 /**
@@ -10,12 +9,11 @@ import org.apache.log4j.Logger;
  *
  * @author Maxline.
  */
-
-enum PartOfDay {
-    NIGHT, MORNING, DAY, EVENING;
-}
-
 public class Time {
+    enum PartOfDay {
+        NIGHT, MORNING, DAY, EVENING;
+    }
+
     private static Logger LOG = Logger.getLogger(Time.class.getName());
 
     private int hour;
@@ -58,6 +56,5 @@ public class Time {
 
         LOG.debug("PartOfDay = (" + partOfDay + ")");
         LOG.debug("definePartOfDay() exit");
-
     }
 }
