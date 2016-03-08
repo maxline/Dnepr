@@ -1,5 +1,8 @@
 package org.maxline.timeverifier;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
 /**
  * The class Time creates Time object for the the necessary data for the timeverifier
  * application. It can define a part of day (morning, day, evening, night) by its hours
@@ -13,6 +16,8 @@ enum PartOfDay {
 }
 
 public class Time {
+    private static Logger LOG = Logger.getLogger(Time.class.getName());
+
     private int hour;
     private int minute;
     private PartOfDay partOfDay;
@@ -37,6 +42,7 @@ public class Time {
     }
 
     public void definePartOfDay() {
+        LOG.debug("definePartOfDay() invoked");
         if (hour >= START_NIGHT || hour < START_MORNING) {
             partOfDay = PartOfDay.NIGHT;
 
@@ -49,5 +55,9 @@ public class Time {
         } else if (hour >= START_MORNING) {
             partOfDay = PartOfDay.MORNING;
         }
+
+        LOG.debug("PartOfDay = (" + partOfDay + ")");
+        LOG.debug("definePartOfDay() exit");
+
     }
 }

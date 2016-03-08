@@ -1,5 +1,8 @@
 package org.maxline.timeverifier;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
@@ -17,11 +20,23 @@ import java.util.TimeZone;
  * @author Maxline.
  */
 public class Start {
+    private static Logger LOG = Logger.getLogger(Start.class.getName());
+
+    static {
+        BasicConfigurator.configure();
+    }
+
     public static void main(String[] args) {
+        LOG.debug("main() invoked");
+
         Calendar calendar = new GregorianCalendar();
         calendar.setTimeZone(TimeZone.getTimeZone("GMT+02:00"));
-        Time time = new Time(calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE));
+        LOG.debug("calendar.get(Calendar.HOUR) = (" + calendar.get(Calendar.HOUR) + ")");
+        LOG.debug("calendar.get(Calendar.MINUTE) = (" +calendar.get(Calendar.MINUTE) + ")");
 
+        Time time = new Time(calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE));
         System.out.println("Good " + time.getPartOfDay().toString().toLowerCase() + ", World!");
+
+        LOG.debug("main() exit");
     }
 }
