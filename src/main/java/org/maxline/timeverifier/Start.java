@@ -3,9 +3,7 @@ package org.maxline.timeverifier;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
  * The class Start contains main method and starts running the timeverifier
@@ -26,17 +24,36 @@ public class Start {
         BasicConfigurator.configure();
     }
 
+    public static Time getTime(int hh, int mm) {
+        return new Time(hh, mm);
+    }
+
+    public static Time getCurrentTime() {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTimeZone(TimeZone.getTimeZone("GMT+02:00"));
+        LOG.debug("calendar.get(Calendar.HOUR) = (" + calendar.get(Calendar.HOUR_OF_DAY) + ")");
+        LOG.debug("calendar.get(Calendar.MINUTE) = (" + calendar.get(Calendar.MINUTE) + ")");
+
+        return getTime(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+    }
+
+
+    public static void printWelcomeMessage(Time time, Locale currentLocale) {
+        ResourceBundle messageBundle = ResourceBundle.getBundle("MessageBundle", currentLocale);
+        System.out.println(messageBundle.getString(time.getPartOfDay().toString()));
+    }
+
     public static void main(String[] args) {
         LOG.debug("main() invoked");
 
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTimeZone(TimeZone.getTimeZone("GMT+02:00"));
-        LOG.debug("calendar.get(Calendar.HOUR) = (" + calendar.get(Calendar.HOUR) + ")");
-        LOG.debug("calendar.get(Calendar.MINUTE) = (" +calendar.get(Calendar.MINUTE) + ")");
-
-        Time time = new Time(calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE));
-        System.out.println("Good " + time.getPartOfDay().toString().toLowerCase() + ", World!");
+        Time time = getCurrentTime();
+        Locale currentLocale = Locale.getDefault();
+        printWelcomeMessage(time, currentLocale);
 
         LOG.debug("main() exit");
     }
+
+
+
+
 }

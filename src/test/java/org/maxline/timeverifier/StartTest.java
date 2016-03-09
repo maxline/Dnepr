@@ -1,38 +1,31 @@
 package org.maxline.timeverifier;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.Locale;
 
 /**
  * Unit test for simple App.
  */
 public class StartTest
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public StartTest(String testName)
-    {
-        super( testName );
-    }
+        @Test
+        public void testApp() {
+            assert  new Time(23, 01).getPartOfDay() == Time.PartOfDay.NIGHT;
+            assert  new Time(2, 01).getPartOfDay() == Time.PartOfDay.NIGHT;
+            assert  new Time(06, 01).getPartOfDay() == Time.PartOfDay.MORNING;
+            assert  new Time(10, 01).getPartOfDay() == Time.PartOfDay.DAY;
+            assert  new Time(19, 01).getPartOfDay() == Time.PartOfDay.EVENING;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( StartTest.class );
-    }
+            assert  new Time(100, 01 ).getPartOfDay() == Time.PartOfDay.NIGHT;
+            assert  new Time(12, -01 ).getPartOfDay() == Time.PartOfDay.DAY;
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+            Time time = Start.getCurrentTime();
+
+            Start.printWelcomeMessage(time, Locale.US);
+            Start.printWelcomeMessage(time, Locale.CHINA);
+            Start.printWelcomeMessage(time, new Locale("ru", "RU"));
+
+        }
 }
