@@ -21,11 +21,11 @@ public class StartTest
             assert  new Time(100, 01 ).getPartOfDay() == Time.PartOfDay.NIGHT;
             assert  new Time(12, -01 ).getPartOfDay() == Time.PartOfDay.DAY;
 
-            Time time = Start.getCurrentTime();
-
-            Start.printWelcomeMessage(time, Locale.US);
-            Start.printWelcomeMessage(time, Locale.CHINA);
-            Start.printWelcomeMessage(time, new Locale("ru", "RU"));
+//            Time time = Start.getCurrentTime();
+//
+//            Start.printWelcomeMessage(time, Locale.US);
+//            Start.printWelcomeMessage(time, Locale.CHINA);
+//            Start.printWelcomeMessage(time, new Locale("ru", "RU"));
 
         }
 }
