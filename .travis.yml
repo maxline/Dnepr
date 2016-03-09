@@ -1,4 +1,5 @@
 language: java
-before_script: mvn install -DskipTests=true
+sudo: false 
+#before_script: mvn install -DskipTests=true
 script: mvn test
 #script: mvn clean verify
