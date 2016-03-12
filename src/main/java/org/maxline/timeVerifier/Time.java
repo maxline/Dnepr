@@ -1,6 +1,5 @@
-package org.maxline.timeVerifier1;
+package org.maxline.timeVerifier;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 /**
@@ -14,14 +13,9 @@ public class Time {
     public static final int MAX_HOUR = 23;
     public static final int MAX_MINUTE = 59;
 
-    public enum PartOfDay {
-        NIGHT, MORNING, DAY, EVENING;
-    }
+    public enum PartOfDay {NIGHT, MORNING, DAY, EVENING}
 
     private static Logger LOG = Logger.getLogger(Time.class.getName());
-    static {
-        BasicConfigurator.configure();
-    }
 
     private int hour;
     private int minute;
@@ -33,11 +27,11 @@ public class Time {
     public static final int START_NIGHT = 23;
 
     public Time(int hh, int mm) {
-        if (hh<0 || hh > MAX_HOUR) {
-            hh =0;
+        if (hh < 0 || hh > MAX_HOUR) {
+            throw new IllegalArgumentException();
         }
-        if (mm<0 || mm > MAX_MINUTE) {
-            mm =0;
+        if (mm < 0 || mm > MAX_MINUTE) {
+            throw new IllegalArgumentException();
         }
 
         hour = hh;
@@ -68,7 +62,7 @@ public class Time {
             partOfDay = PartOfDay.MORNING;
         }
 
-        LOG.debug("PartOfDay = (" + partOfDay + ")");
+        LOG.info("Time = " + this + ", PartOfDay = (" + partOfDay + ")");
         LOG.debug("definePartOfDay() exit");
     }
 }
