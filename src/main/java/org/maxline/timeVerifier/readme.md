@@ -9,10 +9,10 @@ Good evening, World! в 19:00 - 23:00
 Good night, World! в 23:00 - 06:00
 
 Код должен содержать все возможные юнит-тесты и создавать читабельный лог файл.
+Путь лог файла C:\TMP\time_verifier.log
 
 Выводящиеся на консоль сообщения должны быть получены из message resource и зависеть
 от системной локали пользователя. Сделать перевод на русский язык.
 
 В README должен присутствовать статус сборки
-от Travis CI (https://docs.travis-ci.com/user/status-images/) или
-Circle CI (https://circleci.com/docs/status-badges).
+от Travis CI (https://docs.travis-ci.com/user/status-images/).
